@@ -29,8 +29,8 @@ contract Tarefa02 is ERC20 {
         uint256 amount
     ) public virtual override returns (bool) {
         address spender = _msgSender();
-        uint burnAmount = ((amount * BURN_RATE) / 100);
         _spendAllowance(from, spender, amount);
+        uint burnAmount = ((amount * BURN_RATE) / 100);
         _burn(_msgSender(), burnAmount);
         _transfer(from, to, amount - burnAmount);
         return true;
